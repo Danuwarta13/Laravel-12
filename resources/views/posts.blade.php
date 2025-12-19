@@ -39,9 +39,11 @@
          </form>
 
 
+         {{ $posts->links() }}
+
          {{-- Blog Posts --}}
-         <div class="grid gap-8 lg:grid-cols-3 md:grid-cols-2">
-             @foreach ( $posts as $post )
+         <div class="mt-4 grid gap-8 lg:grid-cols-3 md:grid-cols-2">
+             @forelse ( $posts as $post )
              <article class="p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:shadow-lg transition-all hover:scale-105 dark:bg-gray-800 dark:border-gray-700">
                  <div class="flex justify-between items-center mb-5 text-gray-500">
                      <a href="/posts?category={{ $post->category->slug }}">
@@ -70,7 +72,15 @@
                      </a>
                  </div>
              </article>
-             @endforeach
+
+             {{-- Jika tidak ditemukan --}}
+             @empty
+             <div class="col-span-full flex justify-center items-center flex-col">
+                 <p class="font-semibold text-xl my-4">Article Not Found</p>
+                 <a href="/posts" class="block text-blue-500 hover:underline">&laquo; Back to all Posts.</a>
+             </div>
+
+             @endforelse
          </div>
      </div>
 
