@@ -13,10 +13,14 @@ Route::get('/posts', function () {
 
     // $posts = Post::with(['category', 'author'])->latest()->get();
 
-    $posts = Post::latest()->get();
+    $posts = Post::latest();
+
+    if (request('search')) {
+        $posts->where('title', 'like', '%' . request('search') . '%');
+    }
 
     // dd($posts);
-    return view('posts', ['title' => 'Blog page', 'posts' => $posts]);
+    return view('posts', ['title' => 'Blog page', 'posts' => $posts->get()]);
 });
 
 Route::get('/posts/{post:slug}', function (Post $post) {

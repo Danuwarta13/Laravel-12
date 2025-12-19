@@ -20,9 +20,9 @@
                          <div class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
                              <img class="mr-4 w-16 h-16 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-2.jpg" alt="{{ $post->author->name }}">
                              <div>
-                                 <a href="/authors/{{ $post->author->username }}" rel="author" class="block text-xl font-bold text-gray-900 mb-1 dark:text-white">{{ $post->author->name }}</a>
+                                 <a href="/authors/{{ $post->author->username }}" rel="author" class="block text-xl font-bold text-gray-900 mb-1 hover:underline dark:text-white">{{ $post->author->name }}</a>
                                  <a href="/categories/{{ $post->category->slug }}">
-                                     <span class=" {{ $post->category->color }} text-gray-600 mb-1 text-xs font-medium inline-flex items-center px-2.5 py-1 rounded-sm dark:bg-primary-200 dark:text-primary-800">
+                                     <span class=" {{ $post->category->color }} hover:scale-105 transition-all text-gray-600 mb-1 text-xs font-medium inline-flex items-center px-2.5 py-1 rounded-sm dark:bg-primary-200 dark:text-primary-800">
                                          {{$post->category->name}}
                                      </span>
                                  </a>
